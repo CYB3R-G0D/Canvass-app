@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Canvass</string>
+    <string name="app_about1">Draw and take notes anywhere on your device.</string>
+    <string name="app_about2">Export your drawing as PNG and share with anyone.</string>
+    <string
+        name="moreApps"><a href="https://www.github.com/cyb3rg0d">More apps</a></string>
+</resources>
