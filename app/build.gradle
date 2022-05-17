@@ -4,7 +4,7 @@ plugins {
 
 android {
     compileSdkVersion 32
-    buildToolsVersion "32.0.0"
+    buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "com.cyb3rg0d.canvass"
