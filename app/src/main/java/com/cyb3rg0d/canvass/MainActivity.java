@@ -150,31 +150,35 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                fileName = path + "/" + input.getText() + ".png";
-                if (!path.exists()){
-                    path.mkdirs();
-                }
-                File file = new File(fileName);
-                Bitmap bitmap = signatureView.getSignatureBitmap();
+                if (input.length()==0){
+                    Toast.makeText(MainActivity.this, "Give file a name", Toast.LENGTH_SHORT).show();
+                } else {
+                    fileName = path + "/" + input.getText() + ".png";
+                    if (!path.exists()){
+                        path.mkdirs();
+                    }
+                    File file = new File(fileName);
+                    Bitmap bitmap = signatureView.getSignatureBitmap();
 
-                // converting bitmap in byte array
-                ByteArrayOutputStream BOS = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG,0,BOS);
-                byte[] bitmapData = BOS.toByteArray();
+                    // converting bitmap in byte array
+                    ByteArrayOutputStream BOS = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.PNG,0,BOS);
+                    byte[] bitmapData = BOS.toByteArray();
 
-                try {
-                    FileOutputStream fos = new FileOutputStream(file);
-                    fos.write(bitmapData);
-                    fos.flush();
-                    fos.close();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                    Toast.makeText(MainActivity.this, "Error saving", Toast.LENGTH_SHORT).show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Toast.makeText(MainActivity.this, "Error saving", Toast.LENGTH_SHORT).show();
+                    try {
+                        FileOutputStream fos = new FileOutputStream(file);
+                        fos.write(bitmapData);
+                        fos.flush();
+                        fos.close();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                        Toast.makeText(MainActivity.this, "Error saving", Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(MainActivity.this, "Error saving", Toast.LENGTH_SHORT).show();
+                    }
+                    Toast.makeText(MainActivity.this, "Saved as PNG", Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(MainActivity.this, "Saved as PNG", Toast.LENGTH_SHORT).show();
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -215,6 +219,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id){
+            case R.id.background_change:
+                CanvasColor();
+                return true;
             case R.id.about:
                 Intent intent = new Intent(MainActivity.this,about.class);
                 startActivity(intent);
@@ -227,5 +234,22 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void CanvasColor() {
+        AmbilWarnaDialog canvasColorDialog = new AmbilWarnaDialog(this, defaultColor, new AmbilWarnaDialog.OnAmbilWarnaListener() {
+            @Override
+            public void onCancel(AmbilWarnaDialog dialog) {
+
+            }
+
+            @Override
+            public void onOk(AmbilWarnaDialog canvas, int canvasColor) {
+                defaultColor = canvasColor;
+                signatureView.setBackgroundColor(defaultColor);
+                signatureView.clearCanvas();
+            }
+        });
+        canvasColorDialog.show();
     }
 }
