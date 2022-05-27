@@ -57,18 +57,14 @@
             android:gravity="center"
             android:layout_centerHorizontal="true"/>
 
-        <TextView
-            android:id="@+id/moreApps"
-            android:layout_width="wrap_content"
+        <ListView
+            android:id="@+id/listView"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/moreApps"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/about2"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
-            android:textSize="24sp"
-            android:textColorLink="@color/purple_700"
-            android:textStyle="bold"/>
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="false"
+            android:layout_below="@id/about2"/>
     </RelativeLayout>
 
 </RelativeLayout>

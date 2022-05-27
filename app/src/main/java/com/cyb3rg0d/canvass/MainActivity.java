@@ -226,11 +226,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this,about.class);
                 startActivity(intent);
                 return true;
-            case R.id.report:
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse("https://github.com/CYB3R-G0D/Canvass-app/issues"));
-                startActivity(i);
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

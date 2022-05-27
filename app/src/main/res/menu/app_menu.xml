@@ -4,21 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <item android:id="@+id/background_change"
-        android:title="Canvas color"
+        android:title="Background color"
         android:icon="@drawable/ic_baseline_colorize"
         app:showAsAction="ifRoom">
     </item>
 
     <item android:id="@+id/moreMenu"
         android:orderInCategory="2"
-        android:title="Info"
+        android:title="More info"
         android:icon="@drawable/ic_baseline_more_vert"
         app:showAsAction="ifRoom">
         <menu>
             <item  android:id="@+id/about"
                 android:title="About"/>
-            <item  android:id="@+id/report"
-                android:title="Report"/>
         </menu>
     </item>
 

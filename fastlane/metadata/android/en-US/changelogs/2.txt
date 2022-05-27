@@ -1,0 +1,2 @@
+- Added canvas background color change
+- Fixed about action bar color and other minor bugs
